@@ -1,0 +1,1 @@
+Example to control/monitor a dc motor within homeassistant via mqtt
