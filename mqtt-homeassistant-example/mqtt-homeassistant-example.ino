@@ -18,8 +18,8 @@ const char *password = "57289887252221648185KaL!";
 // MQTT Broker IP address
 const char *mqtt_identifier = "DHTSlave";
 const char *mqtt_server = "192.168.188.125";
-const char *mqtt_user = "homeassistant";
-const char *mqtt_pass = "pua0aeShait5Ieh5DieYiesh1lie8oCaexo5righoh6ohkiwuHoos2zoGh3ahxox";
+const char *mqtt_user = "mqtt-user";
+const char *mqtt_pass = "mqtt";
 
 int sending_mqtt_every_ms = 5000;
 
