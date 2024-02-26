@@ -14,8 +14,8 @@ const char *password = "57289887252221648185KaL!"; // Password of your WiFi netw
 // MQTT Broker IP address
 const char *mqtt_identifier = "WaterflowSensor"; // MQTT client identifier
 const char *mqtt_server = "192.168.188.125"; // IP address of MQTT broker
-const char *mqtt_user = "homeassistant"; // MQTT username
-const char *mqtt_pass = "pua0aeShait5Ieh5DieYiesh1lie8oCaexo5righoh6ohkiwuHoos2zoGh3ahxox"; // MQTT password
+const char *mqtt_user = "mqtt-user"; // MQTT username
+const char *mqtt_pass = "mqtt"; // MQTT password
 
 // Interval for sending MQTT messages
 int sending_mqtt_every_ms = 5000; // Time interval for sending MQTT messages (in milliseconds)
