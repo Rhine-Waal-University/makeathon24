@@ -67,6 +67,7 @@ void reconnect() {
       strcat(topicString, "/signal");
       mqttClient.subscribe(topicString);
     } else {
+      digitalWrite(SIGNAL_PIN, LOW); 
       Serial.print("failed, rc=");
       Serial.print(mqttClient.state());
       Serial.println(" try again in 5 seconds");
@@ -89,6 +90,8 @@ void setup() {
 }
 
 void loop() {
-  if (!mqttClient.connected()) reconnect();  // Ensure the MQTT connection is alive
+  if (!mqttClient.connected()){
+    reconnect();  // Ensure the MQTT connection is alive
+  } 
   mqttClient.loop();                         // Process MQTT tasks
 }
