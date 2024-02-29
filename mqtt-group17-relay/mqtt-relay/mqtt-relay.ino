@@ -25,6 +25,8 @@ int SIGNAL_PIN = 13;
 
 // Sets up WiFi connection using the provided credentials
 void setup_wifi() {
+  digitalWrite(SIGNAL_PIN, LOW);
+  
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);              // Connect to the WiFi network
@@ -77,20 +79,22 @@ void reconnect() {
   }
 }
 
-void setup() {
+void setup() { 
+  //Define custom Pins etc.
+  pinMode(SIGNAL_PIN, OUTPUT);
+  digitalWrite(SIGNAL_PIN, LOW);
+  
   Serial.begin(9600);                       // Initialize serial communication at baud rate
   setup_wifi();                             // Connect to WiFi
   mqttClient.setServer(mqtt_server, 1883);  // Set the MQTT server and port
   mqttClient.setCallback(callback);
-  prevMillis = millis();  // Initialize the timer for message sending
-
-  pinMode(SIGNAL_PIN, OUTPUT);
-  digitalWrite(SIGNAL_PIN, LOW);
-  //Define custom Pins etc.
+  prevMillis = millis();  // Initialize the timer for message sending  
 }
 
 void loop() {
-  if (!mqttClient.connected()){
+  if (WiFi.status() != WL_CONNECTED){
+    setup_wifi();
+  } else if (!mqttClient.connected()){
     reconnect();  // Ensure the MQTT connection is alive
   } 
   mqttClient.loop();                         // Process MQTT tasks
