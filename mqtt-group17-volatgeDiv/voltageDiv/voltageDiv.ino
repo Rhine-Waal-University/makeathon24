@@ -10,7 +10,7 @@ const char *ssid = "FabLabWS";
 const char *password = "57289887252221648185KaL!";
 
 // MQTT Broker IP address
-const char *mqtt_identifier = "VoltageDiv";
+const char *mqtt_identifier = "group17-voltageDiv";
 const char *mqtt_server = "192.168.188.125";
 const char *mqtt_user = "mqtt-user";
 const char *mqtt_pass = "mqtt";
@@ -18,8 +18,8 @@ const char *mqtt_pass = "mqtt";
 long lastMsg = 0;
 char msg[50];
 char topic[50];
-float R1 = 10000;
-float R2 = 3000;
+float R1 = 220000;
+float R2 = 4700;
 long sending_mqtt_every_ms = 5000;
 
 
@@ -61,7 +61,7 @@ void reconnect() {
       Serial.println("connected");
       // Subscribe
       strcpy(topic, mqtt_identifier);
-      strcat(topic, "/output");
+      strcat(topic, "/value");
       client.subscribe(topic);
     } else {
       Serial.print("failed, rc=");
